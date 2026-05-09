@@ -1,24 +1,18 @@
-# Nome do Workflow
-name: Deploy Portfolio to GitHub Pages
+name: Deploy Portfolio
 
 on:
-  # Dispara o workflow sempre que houver um push na branch main
   push:
     branches: ["main"]
-  # Permite rodar o workflow manualmente pela aba Actions
   workflow_dispatch:
 
-# Variáveis globais para resolver o aviso de depreciação do Node 20
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
-# Configurações de permissões necessárias para o GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Garante que apenas um deploy ocorra por vez
 concurrency:
   group: "pages"
   cancel-in-progress: true
@@ -27,31 +21,26 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout do código
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configurar Node.js 24
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: 'npm'
+          # Removemos a linha 'cache: npm' para evitar o erro de lock file not found
+          # se o arquivo não estiver na raiz exata.
 
-      - name: Instalar dependências
+      - name: Install Dependencies
+        # Usamos 'npm install' em vez de 'npm ci' caso o lockfile não esteja presente
         run: npm install
 
-      - name: Compilar projeto (Build)
+      - name: Build
         run: npm run build
-        # Se você tiver variáveis de ambiente sensíveis, elas entrariam aqui:
-        # env:
-        #   VITE_GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
-      - name: Configurar Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload do artefato
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # O Vite gera os arquivos na pasta 'dist' por padrão
           path: './dist'
 
   deploy:
@@ -61,6 +50,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Deploy para GitHub Pages
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
