@@ -1,3 +1,8 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 import React, { useState, useEffect } from 'react';
 import { 
   Database, 
@@ -41,64 +46,187 @@ const SKILLS = [
   { name: 'Looker Studio', level: 90, icon: <Layout className="w-5 h-5" /> },
   { name: 'Google Apps Script', level: 92, icon: <Terminal className="w-5 h-5" /> },
   { name: 'AppSheet', level: 88, icon: <Cpu className="w-5 h-5" /> },
-  { name: 'RPA / Workflow', level: 94, icon: <Workflow className="w-5 h-5" /> },
-  { name: 'AI Solutions', level: 85, icon: <Sparkles className="w-5 h-5" /> },
+  { name: 'RPA / Automação', level: 94, icon: <Workflow className="w-5 h-5" /> },
+  { name: 'AI Solutions', level: 85, icon: <Bot className="w-5 h-5" /> },
+];
+
+const EXPERIENCES = [
+  {
+    company: "RRV CONSULTORIA",
+    role: "Proprietário / Administrador",
+    period: "Dezembro 2025 - Presente",
+    description: "Elevação do padrão de SST através da inteligência de dados e automação estratégica.",
+    tags: ["Power BI", "RPA", "Predictive Analytics", "Consultoria Técnica"],
+    achievements: [
+      "Gestão de SST 4.0: Dashboards dinâmicos para visualização de KPIs em tempo real",
+      "Automação de Conformidade: Sistemas para controle de prazos de ASOs e EPIs",
+      "Análise Preditiva de Riscos para prevenção de acidentes industriais"
+    ]
+  },
+  {
+    company: "SHOPEE",
+    role: "Senior Associate",
+    period: "Julho 2022 - Outubro 2025",
+    description: "Liderança de iniciativas de BI e automação para Operações e HSE.",
+    tags: ["Google Apps Script", "SeaTalk API", "SQL", "Looker Studio"],
+    achievements: [
+      "Desenvolvimento de dashboards estratégicos com redução drástica de tempo de análise manual",
+      "Criação de bot integrador SeaTalk para notificações automáticas de relatórios de turno",
+      "Digitalização de processos de logística e HSE via AppSheet integrados a sistemas internos"
+    ]
+  },
+  {
+    company: "MARTIN BROWER",
+    role: "Analista de HSE / Auditoria",
+    period: "Agosto 2019 - Julho 2022",
+    description: "Transformação de dados brutos em inteligência para tomada de decisão em logística.",
+    tags: ["Power BI", "Excel Advanced", "SAP", "Gestão de KPIs"],
+    achievements: [
+      "Pioneirismo no uso de dashboards para centralização de performance de rotas e segurança",
+      "Redução de 20% nas não conformidades de segurança via análise de indicadores preventivos",
+      "Liderança na preparação para auditorias de Qualidade e SA8000 com 100% de conformidade"
+    ]
+  },
+  {
+    company: "POSIGRAF",
+    role: "Technical Work Safety",
+    period: "Outubro 2014 - Agosto 2019",
+    description: "Gestão de segurança do trabalho e conformidade normativa em ambiente industrial.",
+    tags: ["SGI", "ISO 9001/14001", "Auditoria Interna", "Gestão de Terceiros"],
+    achievements: [
+      "Realização de análise e planejamento do orçamento anual da área de segurança",
+      "Coordenação da Brigada de Emergência e CIPA focada em redução de riscos críticos",
+      "Implementação técnica rigorosa de treinamentos normativos (NRs) e auditorias de SGI"
+    ]
+  }
+];
+
+const EDUCATION = [
+  {
+    institution: "UniFatecie",
+    degree: "Pós Graduação Engenharia de Segurança do Trabalho",
+    period: "2026",
+    status: "Concluído"
+  },
+  {
+    institution: "UniFatecie",
+    degree: "Análise e Desenvolvimento de Sistemas",
+    period: "2025",
+    status: "Concluído"
+  },
+  {
+    institution: "UniFatecie",
+    degree: "Bacharelado em Engenharia Ambiental e Sanitária",
+    period: "2023 - 2026",
+    status: "Em curso"
+  },
+  {
+    institution: "Universidade Positivo",
+    degree: "Bacharelado em Administração e Negócios",
+    period: "2018 - 2021",
+    status: "Concluído"
+  }
 ];
 
 const PROJECTS = [
   {
-    title: "Beauty Sabrina",
-    type: "E-commerce & Catalog",
-    tech: ["React", "WhatsApp API", "Cloud"],
-    desc: "Plataforma de vendas otimizada para alta conversão mobile.",
-    link: "https://devolprodrigov.github.io/beauty-sabrina/"
+    title: "SST 4.0 Dashboard",
+    desc: "Painel de controle preditivo que unifica dados de segurança, treinamentos e riscos em tempo real.",
+    tech: ["Power BI", "DAX", "SQL"],
+    color: "from-blue-600 to-indigo-500",
+    isNew: true,
+    githubUrl: "https://github.com/Devolprodrigov",
+    liveUrl: "#"
   },
   {
-    title: "Adriana Reciclagem",
-    type: "ERP Industrial",
-    tech: ["Vite", "Firebase", "Dashboards"],
-    desc: "Sistema completo de gestão de resíduos com análise preditiva.",
-    link: "https://devolprodrigov.github.io/adriana-reciclagem/"
+    title: "SeaTalk Enterprise Bot",
+    desc: "Sistema de automação que dispara relatórios executivos via SeaTalk baseado em triggers de performance.",
+    tech: ["Apps Script", "Webhook API", "JSON"],
+    color: "from-orange-500 to-rose-400",
+    githubUrl: "https://github.com/Devolprodrigov",
+    liveUrl: "#"
   },
   {
-    title: "Rabia Perfumes",
-    type: "Luxury Catalog",
-    tech: ["UI/UX", "Animation", "Responsive"],
-    desc: "Experiência premium para catálogo de fragrâncias de luxo.",
-    link: "https://devolprodrigov.github.io/rabia-perfumes/"
+    title: "Mobile HSE Auditor",
+    desc: "Aplicativo personalizado para checklist de campo, eliminando papel e gerando reports imediatos.",
+    tech: ["AppSheet", "BigQuery", "UX"],
+    color: "from-emerald-500 to-teal-400",
+    githubUrl: "https://github.com/Devolprodrigov",
+    liveUrl: "#"
   },
   {
-    title: "Data Automation Pro",
-    type: "Backend / ETL",
-    tech: ["Python", "SQL Server", "Google API"],
-    desc: "Scripts de automação que reduziram o processamento manual em 80%.",
-    link: "#"
+    title: "ETL Predictive Pipeline",
+    desc: "Pipeline de dados que identifica tendências e gargalos logísticos antes que impactem a operação.",
+    tech: ["Python", "Pandas", "SQL"],
+    color: "from-violet-600 to-fuchsia-500",
+    githubUrl: "https://github.com/Devolprodrigov",
+    liveUrl: "#"
   }
 ];
 
-const EXPERIENCE = [
+const GITHUB_REPOS = [
   {
-    company: "RRV CONSULTORIA",
-    role: "Especialista em Dados & Automação",
-    period: "2025 - Presente",
-    achievements: ["Implementação de SST 4.0", "Criação de Dashboards executivos", "Automação de workflows industriais"]
+    name: "Beauty Sabrina",
+    desc: "Plataforma de revenda oficial focada em estética e beleza, com checkout otimizado para conversão via WhatsApp.",
+    url: "https://beauty-sabrina.vercel.app/",
+    tech: "React / Vercel",
+    image: "https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?auto=format&fit=crop&q=80&w=800"
   },
   {
-    company: "SHOPEE",
-    role: "Liderança de BI & Processos",
-    period: "2022 - 2025",
-    achievements: ["Desenvolvimento de bots via SeaTalk API", "Gestão de KPIs logísticos", "Digitalização de check-lists"]
+    name: "Adriana Reciclagem",
+    desc: "Solução industrial para gestão de resíduos, com dashboard completo de controle financeiro e IA Insights.",
+    url: "https://adriana-reciclagem.vercel.app/",
+    tech: "Tailwind CSS",
+    image: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&q=80&w=800"
   },
   {
-    company: "MARTIN BROWER",
-    role: "Analista SGI / Logística",
-    period: "2019 - 2022",
-    achievements: ["Redução de 20% em não conformidades", "Dashboards Power BI para Supply Chain"]
+    name: "Rabia Perfumes",
+    desc: "Catálogo premium de fragrâncias exclusivas (Árabes e Importados) com design de luxo e navegação fluida.",
+    url: "https://rabia-perfumes-k1nh.vercel.app/",
+    tech: "Framer Motion",
+    image: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    name: "Data Automation Pro",
+    desc: "Scripts avançados de integração e limpeza de dados industriais para automação de processos.",
+    url: "https://github.com/Devolprodrigov",
+    tech: "Python / SQL",
+    image: "https://images.unsplash.com/photo-1551288049-bbbda5366391?auto=format&fit=crop&q=80&w=800"
   }
 ];
+
+
+const SectionTitle = ({ children, subtitle }: { children: React.ReactNode, subtitle?: string }) => (
+  <div className="mb-16">
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      className="flex items-center gap-4 mb-2"
+    >
+      <div className="w-12 h-[2px] bg-blue-500" />
+      {subtitle && (
+        <span className="text-blue-500 font-bold uppercase tracking-[0.3em] text-[10px]">
+          {subtitle}
+        </span>
+      )}
+    </motion.div>
+    <motion.h2 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.1 }}
+      className="text-4xl md:text-5xl font-black text-white"
+    >
+      {children}
+    </motion.h2>
+  </div>
+);
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState(0);
+  const [typedText, setTypedText] = useState('');
+  const [techIndex, setTechIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -106,207 +234,33 @@ export default function App() {
     restDelta: 0.001
   });
 
+  useEffect(() => {
+    const currentTech = TECH_STACK[techIndex];
+    const typingSpeed = isDeleting ? 30 : 70;
+
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        setTypedText(currentTech.substring(0, typedText.length + 1));
+        if (typedText === currentTech) {
+          setTimeout(() => setIsDeleting(true), 2000);
+        }
+      } else {
+        setTypedText(currentTech.substring(0, typedText.length - 1));
+        if (typedText === '') {
+          setIsDeleting(false);
+          setTechIndex((prev) => (prev + 1) % TECH_STACK.length);
+        }
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timer);
+  }, [typedText, isDeleting, techIndex]);
+
   return (
-    <div className="min-h-screen font-sans text-slate-300 selection:bg-blue-500/30">
-      <motion.div className="fixed top-0 left-0 right-0 h-1 bg-blue-600 origin-left z-50" style={{ scaleX }} />
-      
-      {/* NAVIGATION CORRIGIDA */}
-      <header className="fixed top-0 w-full z-40 border-b border-white/5 bg-[#020617]/80 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Box className="w-6 h-6 text-blue-500" />
-            <div className="text-xl font-black text-white tracking-tighter">
-              RODRIGO<span className="text-blue-500">.</span>DEV
-            </div>
-          </div>
-          
-          <nav className="hidden md:flex items-center gap-8">
-            <a href="#carreira" className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-blue-500 transition-colors">Carreira</a>
-            <a href="#habilidades" className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-blue-500 transition-colors">Habilidades</a>
-            <a href="#projetos" className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-blue-500 transition-colors">Projetos</a>
-            <a href="#contato" className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-black uppercase tracking-widest rounded-full transition-all shadow-lg shadow-blue-900/20">
-              Contato
-            </a>
-          </nav>
-        </div>
-      </header>
+    <div className="min-h-screen bg-[#020617] text-slate-300 font-sans selection:bg-blue-500/30 overflow-x-hidden">
+      {/* ProgressBar */}
+      <motion.div className="fixed top-0 left-0 right-0 h-1 bg-blue-500 z-[100] origin-left" style={{ scaleX }} />
 
-      <main className="pt-20">
-        {/* HERO SECTION */}
-        <section className="relative py-24 px-6 overflow-hidden">
-          <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-black uppercase tracking-widest mb-6">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-                </span>
-                Disponível para Projetos Estratégicos
-              </div>
-              <h1 className="text-6xl md:text-8xl font-black text-white leading-none mb-6 tracking-tighter">
-                SST 4.0 & <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-400">DADOS.</span>
-              </h1>
-              <p className="text-lg text-slate-400 max-w-xl mb-10 leading-relaxed font-medium">
-                Transformo ambientes industriais complexos em operações inteligentes através de Python, Power BI e Automação de Processos.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <button onClick={() => window.location.href="#contato"} className="px-8 py-4 bg-white text-black font-black uppercase text-xs tracking-widest rounded-none hover:bg-blue-500 hover:text-white transition-all flex items-center gap-2">
-                  Iniciar Projeto <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* HABILIDADES (ID ADICIONADO) */}
-        <section id="habilidades" className="py-24 px-6 bg-white/5 border-y border-white/5">
-          <div className="max-w-7xl mx-auto">
-            <div className="mb-16">
-              <h2 className="text-[10px] font-black text-blue-500 uppercase tracking-[0.4em] mb-4">Stack Técnica</h2>
-              <h3 className="text-4xl font-black text-white tracking-tighter">MATRIZ DE COMPETÊNCIAS</h3>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {SKILLS.map((skill, i) => (
-                <div key={i} className="p-6 bg-[#0f172a] border border-white/5 hover:border-blue-500/50 transition-all group">
-                  <div className="text-blue-500 mb-4 group-hover:scale-110 transition-transform">{skill.icon}</div>
-                  <div className="flex justify-between items-end mb-2">
-                    <span className="text-white font-black text-xs uppercase tracking-widest">{skill.name}</span>
-                    <span className="text-blue-500 font-mono text-xs">{skill.level}%</span>
-                  </div>
-                  <div className="h-1 bg-white/10 w-full overflow-hidden">
-                    <motion.div 
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.level}%` }}
-                      className="h-full bg-blue-500"
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CARREIRA (ID ADICIONADO) */}
-        <section id="carreira" className="py-24 px-6">
-          <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-16">
-            <div>
-              <h2 className="text-[10px] font-black text-blue-500 uppercase tracking-[0.4em] mb-4">Experiência</h2>
-              <h3 className="text-4xl font-black text-white tracking-tighter mb-8">TRAJETÓRIA PROFISSIONAL</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">
-                Mais de uma década unindo Segurança Industrial, Administração e Tecnologia para otimizar resultados.
-              </p>
-            </div>
-            <div className="lg:col-span-2 space-y-12">
-              {EXPERIENCE.map((exp, i) => (
-                <div key={i} className="relative pl-8 border-l border-white/10">
-                  <div className="absolute top-0 left-[-5px] w-[9px] h-[9px] bg-blue-500 rounded-full" />
-                  <div className="text-blue-400 font-mono text-[10px] mb-2">{exp.period}</div>
-                  <h4 className="text-xl font-black text-white uppercase tracking-tighter">{exp.company}</h4>
-                  <div className="text-xs font-bold text-slate-500 mb-4 uppercase tracking-widest">{exp.role}</div>
-                  <ul className="space-y-2">
-                    {exp.achievements.map((item, j) => (
-                      <li key={j} className="flex items-center gap-2 text-sm text-slate-400">
-                        <CheckCircle2 className="w-3 h-3 text-blue-900" /> {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* PROJETOS (ID ADICIONADO) */}
-        <section id="projetos" className="py-24 px-6 bg-[#0a101f]">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex justify-between items-end mb-16">
-              <div>
-                <h2 className="text-[10px] font-black text-blue-500 uppercase tracking-[0.4em] mb-4">Portfólio</h2>
-                <h3 className="text-4xl font-black text-white tracking-tighter uppercase">EXECUÇÃO DE PROJETOS</h3>
-              </div>
-            </div>
-            <div className="grid md:grid-cols-2 gap-8">
-              {PROJECTS.map((project, i) => (
-                <div key={i} className="group relative bg-[#0f172a] border border-white/5 p-8 overflow-hidden hover:border-blue-500/30 transition-all">
-                  <div className="flex justify-between items-start mb-6">
-                    <div className="p-3 bg-blue-500/10 rounded-lg text-blue-500"><Layout className="w-6 h-6" /></div>
-                    <div className="flex gap-2">
-                      {project.tech.map((t, j) => (
-                        <span key={j} className="text-[8px] font-black uppercase tracking-tighter px-2 py-1 bg-white/5 text-slate-500">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <h4 className="text-2xl font-black text-white mb-2 uppercase tracking-tighter">{project.title}</h4>
-                  <p className="text-slate-400 text-sm mb-6 font-medium">{project.desc}</p>
-                  <a href={project.link} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-xs font-black text-blue-500 uppercase tracking-widest hover:text-white transition-colors">
-                    Ver Repositório <ExternalLink className="w-4 h-4" />
-                  </a>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CONTATO (ID ADICIONADO) */}
-        <section id="contato" className="py-32 px-6">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex p-4 bg-blue-600/10 rounded-full text-blue-500 mb-8">
-              <Zap className="w-8 h-8" />
-            </div>
-            <h2 className="text-5xl font-black text-white mb-8 tracking-tighter uppercase">VAMOS ESCALAR SUA OPERAÇÃO?</h2>
-            <div className="flex flex-col md:flex-row gap-4 justify-center">
-              <a href="https://wa.me/5541992764125" className="px-8 py-4 bg-blue-600 text-white font-black uppercase text-xs tracking-widest flex items-center justify-center gap-2 hover:bg-blue-700 transition-all">
-                <Phone className="w-4 h-4" /> WhatsApp
-              </a>
-              <a href="mailto:rodrigo.darosa@outlook.com" className="px-8 py-4 bg-white/5 border border-white/10 text-white font-black uppercase text-xs tracking-widest flex items-center justify-center gap-2 hover:bg-white/10 transition-all">
-                <Mail className="w-4 h-4" /> E-mail Profissional
-              </a>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      {/* FOOTER */}
-      <footer className="py-12 px-6 border-t border-white/5 bg-[#01040f]">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
-          <div>
-            <div className="flex items-center gap-2 mb-4 justify-center md:justify-start">
-              <Box className="w-6 h-6 text-blue-500" />
-              <div className="text-xl font-black text-white uppercase">RODRIGO<span className="text-blue-500">.</span>DEV</div>
-            </div>
-            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 max-w-xs">
-              SISTEMA OTIMIZADO PARA ALTA PERFORMANCE E DECISÕES BASEADAS EM DADOS.
-            </p>
-          </div>
-          
-          <div className="flex gap-12">
-            <div>
-              <h5 className="text-[10px] font-black text-white uppercase tracking-widest mb-4">Mídias</h5>
-              <div className="flex gap-4">
-                <a href="https://github.com/Devolprodrigov" target="_blank" rel="noreferrer" className="text-slate-500 hover:text-white transition-colors">
-                  <Github className="w-5 h-5" />
-                </a>
-                <a href="https://www.linkedin.com/in/rodrigo-vieira-408b6295/" target="_blank" rel="noreferrer" className="text-slate-500 hover:text-blue-500 transition-colors">
-                  <Linkedin className="w-5 h-5" />
-                </a>
-              </div>
-            </div>
-            <div>
-              <h5 className="text-[10px] font-black text-white uppercase tracking-widest mb-4 text-center">Créditos</h5>
-              <div className="text-[10px] font-mono text-slate-600">
-                &copy; 2026 RRV SOLUÇÕES DIGITAIS
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
-}
+      {/* Decorative Grid Background */}
+      <div className="fixed inset-0 pointer-events-none z-0 opacity-20">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#
