@@ -19,6 +19,7 @@ import {
   Workflow,
   CheckCircle2,
   Phone,
+  Send,
   Zap,
   Layout,
   Briefcase,
@@ -137,21 +138,21 @@ const PROJECTS = [
 const GITHUB_REPOS = [
   {
     name: "Beauty Sabrina",
-    desc: "Plataforma de revenda oficial focada em estética e beleza, com checkout otimizado.",
+    desc: "Plataforma de revenda oficial focada em estética e beleza.",
     url: "https://beauty-sabrina.vercel.app/",
     tech: "React / Vercel",
     image: "https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?auto=format&fit=crop&q=80&w=800"
   },
   {
     name: "Adriana Reciclagem",
-    desc: "Solução industrial para gestão de resíduos, com dashboard completo de controle financeiro.",
+    desc: "Solução industrial para gestão de resíduos com dashboards de controle.",
     url: "https://adriana-reciclagem.vercel.app/",
     tech: "Tailwind CSS",
     image: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&q=80&w=800"
   },
   {
     name: "Rabia Perfumes",
-    desc: "Catálogo premium de fragrâncias exclusivas com design de luxo e navegação fluida.",
+    desc: "Catálogo premium de fragrâncias exclusivas com design de luxo.",
     url: "https://rabia-perfumes-k1nh.vercel.app/",
     tech: "Framer Motion",
     image: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=800"
@@ -214,8 +215,22 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#020617] text-slate-300 font-sans selection:bg-blue-500/30 overflow-x-hidden">
+      {/* ProgressBar */}
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-blue-500 z-[100] origin-left" style={{ scaleX }} />
 
+      {/* Decorative Grid Background */}
+      <div className="fixed inset-0 pointer-events-none z-0 opacity-20">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:40px_40px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#020617] to-[#020617]" />
+      </div>
+
+      {/* Glowing Orbs */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-600/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[10%] right-[-5%] w-[40%] h-[40%] bg-purple-600/10 rounded-full blur-[120px]" />
+      </div>
+
+      {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 border-b border-white/5 bg-[#020617]/80 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -246,32 +261,69 @@ export default function App() {
       {/* Hero */}
       <section id="início" className="relative pt-40 pb-24 md:pt-64 md:pb-40 px-6">
         <div className="max-w-7xl mx-auto relative z-10">
-          <motion.a href="https://wa.me/5541999279828" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-black uppercase tracking-[0.3em] mb-8">
-            <Zap className="w-3 h-3 animate-pulse" /> Disponível para Projetos 💬
-          </motion.a>
-          <h1 className="text-7xl md:text-9xl font-black leading-none tracking-tight text-white mb-8">
-            RODRIGO <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">VIEIRA.</span>
-          </h1>
-          <div className="h-16 flex items-center text-3xl md:text-4xl font-light text-slate-500 mb-12">
-            <span className="font-mono text-blue-500 mr-4">_</span>
-            <span>{typedText}</span>
-          </div>
-          <div className="flex gap-4">
-             <a href="https://github.com/Devolprodrigov" target="_blank" rel="noreferrer" className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-blue-500 transition-all"><Github className="w-5 h-5" /></a>
-             <a href="https://www.linkedin.com/in/rodrigo-vieira-408b6295/" target="_blank" rel="noreferrer" className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-blue-500 transition-all"><Linkedin className="w-5 h-5" /></a>
-             <a href="mailto:rodrigovieiradev@outlook.com" className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-blue-500 transition-all"><Mail className="w-5 h-5" /></a>
-          </div>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+            <motion.a href="https://wa.me/5541999279828" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-black uppercase tracking-[0.3em] mb-8">
+              <Zap className="w-3 h-3 animate-pulse" /> Disponível para Projetos 💬
+            </motion.a>
+            <h1 className="text-7xl md:text-9xl font-black leading-none tracking-tight text-white mb-8">
+              RODRIGO <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">VIEIRA.</span>
+            </h1>
+            <div className="h-16 flex items-center text-3xl md:text-4xl font-light text-slate-500 mb-12">
+              <span className="font-mono text-blue-500 mr-4">_</span>
+              <span>{typedText}</span>
+              <span className="w-2 h-10 bg-blue-600 ml-2 animate-pulse" />
+            </div>
+            <div className="flex gap-4">
+               <a href="https://github.com/Devolprodrigov" target="_blank" rel="noreferrer" className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-blue-500 transition-all"><Github className="w-5 h-5" /></a>
+               <a href="https://www.linkedin.com/in/rodrigo-vieira-408b6295/" target="_blank" rel="noreferrer" className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-blue-500 transition-all"><Linkedin className="w-5 h-5" /></a>
+               <a href="mailto:rodrigovieiradev@outlook.com" className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-blue-500 transition-all"><Mail className="w-5 h-5" /></a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Stats Bar */}
+      <section className="py-20 px-6 border-y border-white/5 bg-white/[0.02] relative z-10">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-12">
+          {[
+            { label: 'Anos de Dados', val: '04+', icon: <Layers /> },
+            { label: 'Processos Automatizados', val: '50+', icon: <Workflow /> },
+            { label: 'Empresas Multinacionais', val: '03', icon: <Briefcase /> },
+          ].map((stat, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="group"
+            >
+              <div className="flex items-center gap-3 text-slate-500 mb-2">
+                <span className="p-2 rounded-lg bg-white/5 group-hover:bg-blue-600 transition-colors">
+                  {React.cloneElement(stat.icon as React.ReactElement, { className: "w-4 h-4 group-hover:text-white" })}
+                </span>
+                <span className="text-[10px] font-black uppercase tracking-widest">{stat.label}</span>
+              </div>
+              <div className="text-5xl font-black text-white">{stat.val}</div>
+            </motion.div>
+          ))}
         </div>
       </section>
 
       {/* Carreira */}
-      <section id="carreira" className="py-32 px-6">
+      <section id="carreira" className="py-32 px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <SectionTitle subtitle="Especializações">Perfil Técnico</SectionTitle>
           <div className="space-y-12">
             {EXPERIENCES.map((exp, i) => (
-              <div key={i} className="group grid md:grid-cols-12 gap-8 p-10 rounded-[32px] bg-white/[0.02] border border-white/5 hover:border-blue-500/20 transition-all">
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="group grid md:grid-cols-12 gap-8 p-10 rounded-[32px] bg-white/[0.02] border border-white/5 hover:border-blue-500/20 transition-all"
+              >
                 <div className="md:col-span-3">
                   <span className="text-[10px] font-black text-blue-500 uppercase mb-2 block">{exp.period}</span>
                   <h3 className="text-2xl font-black text-white mb-2">{exp.company}</h3>
@@ -290,39 +342,45 @@ export default function App() {
                 <div className="md:col-span-3 flex flex-wrap gap-2 content-start">
                   {exp.tags.map(t => <span key={t} className="px-3 py-1 bg-white/5 text-[9px] font-black uppercase text-slate-500 rounded-lg">{t}</span>)}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Habilidades */}
-      <section id="habilidades" className="py-32 px-6 bg-white/[0.02]">
+      <section id="habilidades" className="py-32 px-6 bg-white/[0.02] relative z-10">
         <div className="max-w-7xl mx-auto">
           <SectionTitle subtitle="Core Skills">Habilidades Industriais</SectionTitle>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {SKILLS.map((skill, i) => (
-              <div key={i} className="p-8 rounded-3xl bg-white/5 border border-white/5 text-center group hover:border-blue-500/50 transition-all">
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="p-8 rounded-3xl bg-white/5 border border-white/5 text-center group hover:border-blue-500/50 transition-all"
+              >
                 <div className="w-14 h-14 mx-auto rounded-2xl bg-white/5 flex items-center justify-center text-blue-500 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
                   {skill.icon}
                 </div>
                 <h4 className="text-sm font-black text-white uppercase mb-1">{skill.name}</h4>
                 <div className="h-1 w-full bg-white/10 rounded-full mt-4 overflow-hidden">
-                  <div className="h-full bg-blue-500" style={{ width: `${skill.level}%` }} />
+                  <motion.div initial={{ width: 0 }} whileInView={{ width: `${skill.level}%` }} viewport={{ once: true }} transition={{ duration: 1 }} className="h-full bg-blue-500" />
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Formação */}
-      <section id="formação" className="py-32 px-6">
+      <section id="formação" className="py-32 px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <SectionTitle subtitle="Base Acadêmica">Formação</SectionTitle>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {EDUCATION.map((edu, i) => (
-              <div key={i} className="p-8 rounded-[32px] bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all flex flex-col group">
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="p-8 rounded-[32px] bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all flex flex-col group">
                 <span className="text-[9px] font-black uppercase text-blue-500 mb-2">{edu.period}</span>
                 <h4 className="text-xl font-black text-white mb-3 group-hover:text-blue-400">{edu.institution}</h4>
                 <p className="text-xs text-slate-400 mb-6 flex-grow">{edu.degree}</p>
@@ -330,25 +388,25 @@ export default function App() {
                   <div className={`w-1.5 h-1.5 rounded-full ${edu.status === 'Concluído' ? 'bg-emerald-500' : 'bg-amber-500'}`} />
                   <span className="text-[10px] font-bold uppercase text-slate-500">{edu.status}</span>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Projetos */}
-      <section id="projetos" className="py-32 px-6 bg-white/[0.02]">
+      <section id="projetos" className="py-32 px-6 bg-white/[0.02] relative z-10">
         <div className="max-w-7xl mx-auto">
           <SectionTitle subtitle="Execução">Projetos de Impacto</SectionTitle>
           <div className="grid md:grid-cols-4 gap-6">
             {PROJECTS.map((p, i) => (
-              <div key={i} className="relative h-[250px] p-8 rounded-[32px] border border-white/5 bg-[#020617] overflow-hidden group">
+              <motion.div key={i} whileHover={{ y: -5 }} className="relative h-[250px] p-8 rounded-[32px] border border-white/5 bg-[#020617] overflow-hidden group">
                 <div className={`absolute inset-0 bg-gradient-to-br ${p.color} opacity-10 group-hover:opacity-100 transition-all duration-700 pointer-events-none`} />
                 <div className="relative z-10 flex flex-col h-full justify-end">
                    <h3 className="text-xl font-black text-white mb-2 uppercase">{p.title}</h3>
                    <p className="text-[10px] text-slate-500 line-clamp-2">{p.desc}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
@@ -356,13 +414,13 @@ export default function App() {
             <h3 className="text-2xl font-black text-white mb-12 uppercase tracking-tight">Repositórios GitHub</h3>
             <div className="grid md:grid-cols-4 gap-4">
               {GITHUB_REPOS.map((repo, i) => (
-                <a key={i} href={repo.url} target="_blank" rel="noreferrer" className="group overflow-hidden rounded-2xl bg-white/5 border border-white/5 hover:border-blue-500/30 transition-all">
+                <motion.a key={i} href={repo.url} target="_blank" rel="noreferrer" whileHover={{ y: -5 }} className="group overflow-hidden rounded-2xl bg-white/5 border border-white/5 hover:border-blue-500/30 transition-all">
                    <div className="h-32 overflow-hidden"><img src={repo.image} className="w-full h-full object-cover group-hover:scale-110 transition-all" /></div>
                    <div className="p-6">
                       <h4 className="text-sm font-black text-white mb-2">{repo.name}</h4>
                       <p className="text-[10px] text-slate-500 uppercase font-bold tracking-widest">{repo.tech}</p>
                    </div>
-                </a>
+                </motion.a>
               ))}
             </div>
           </div>
@@ -370,17 +428,19 @@ export default function App() {
       </section>
 
       {/* Contato */}
-      <section id="contato" className="py-32 px-6">
+      <section id="contato" className="py-32 px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center rounded-[40px] bg-gradient-to-b from-white/[0.05] to-transparent p-20 border border-white/5">
-          <h3 className="text-5xl font-black text-white mb-8 uppercase tracking-tighter">Bora Vencer?</h3>
-          <div className="flex flex-col md:flex-row gap-4 justify-center">
-            <a href="mailto:rodrigovieiradev@outlook.com" className="bg-white text-black px-8 py-4 rounded-xl font-black uppercase text-xs tracking-widest hover:bg-blue-600 hover:text-white transition-all">E-mail</a>
-            <a href="https://wa.me/5541999279828" target="_blank" rel="noreferrer" className="bg-blue-600 text-white px-8 py-4 rounded-xl font-black uppercase text-xs tracking-widest hover:bg-green-500 transition-all">WhatsApp</a>
-          </div>
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+            <h3 className="text-5xl font-black text-white mb-8 uppercase tracking-tighter">Bora Vencer?</h3>
+            <div className="flex flex-col md:flex-row gap-4 justify-center">
+              <a href="mailto:rodrigovieiradev@outlook.com" className="bg-white text-black px-8 py-4 rounded-xl font-black uppercase text-xs tracking-widest hover:bg-blue-600 hover:text-white transition-all">E-mail</a>
+              <a href="https://wa.me/5541999279828" target="_blank" rel="noreferrer" className="bg-blue-600 text-white px-8 py-4 rounded-xl font-black uppercase text-xs tracking-widest hover:bg-green-500 transition-all">WhatsApp</a>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      <footer className="py-20 border-t border-white/5 px-6 text-center text-[10px] font-black uppercase tracking-[0.3em] text-slate-500">
+      <footer className="py-20 border-t border-white/5 px-6 text-center text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 relative z-10">
         © 2026 RODRIGO.DEV | Built with React 19 + Vite
       </footer>
     </div>
