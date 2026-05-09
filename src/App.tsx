@@ -170,21 +170,21 @@ const GITHUB_REPOS = [
     desc: "Plataforma de revenda oficial focada em estética e beleza, com checkout otimizado para conversão via WhatsApp.",
     url: "https://beauty-sabrina.vercel.app/",
     tech: "React / Vercel",
-    image: "./sabrina.jpg"
+    image: "image/sabrina.png" 
   },
   {
     name: "Adriana Reciclagem",
     desc: "Solução industrial para gestão de resíduos, com dashboard completo de controle financeiro e IA Insights.",
     url: "https://adriana-reciclagem.vercel.app/",
-    tech: "Tailwind CSS",
-    image: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&q=80&w=800"
+    tech: "Tailwind CSS / Firebase",
+    image: "image/adriana.png"
   },
   {
     name: "Rabia Perfumes",
     desc: "Catálogo premium de fragrâncias exclusivas (Árabes e Importados) com design de luxo e navegação fluida.",
     url: "https://rabia-perfumes-k1nh.vercel.app/",
     tech: "Framer Motion",
-    image: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=800"
+    image: "image/perfume.png"
   },
   {
     name: "Data Automation Pro",
