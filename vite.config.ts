@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => {
   
   return {
     // Ajustado para o nome do seu repositório no GitHub
-    base: '/', 
+    base: '/rodrigo-dev-portfolio/', 
     plugins: [
       react(), 
       tailwindcss()
