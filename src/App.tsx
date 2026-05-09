@@ -234,6 +234,24 @@ export default function App() {
     restDelta: 0.001
   });
 
+  // FUNÇÃO DE SCROLL SUAVE PARA OS MENUS
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 80; // Compensação da altura do header fixo
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   useEffect(() => {
     const currentTech = TECH_STACK[techIndex];
     const typingSpeed = isDeleting ? 30 : 70;
@@ -292,6 +310,7 @@ export default function App() {
               <a 
                 key={item} 
                 href={`#${item.toLowerCase()}`}
+                onClick={(e) => scrollToSection(e, item.toLowerCase())}
                 className="hover:text-blue-400 transition-colors cursor-pointer relative group"
               >
                 {item}
@@ -357,11 +376,6 @@ export default function App() {
                 </a>
               </div>
           </motion.div>
-          
-          {/* Background Text Element */}
-          <div className="absolute right-[-10%] top-[40%] select-none pointer-events-none opacity-[0.02]">
-            <h2 className="text-[20vw] font-black text-white leading-none">V-01</h2>
-          </div>
         </div>
       </section>
 
@@ -375,10 +389,6 @@ export default function App() {
           ].map((stat, i) => (
             <motion.div 
               key={i}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
               className="group"
             >
               <div className="flex items-center gap-3 text-slate-500 mb-2">
@@ -403,314 +413,10 @@ export default function App() {
                 {EXPERIENCES.map((exp, i) => (
                   <motion.div 
                     key={i}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
                     className="group grid md:grid-cols-12 gap-8 p-10 rounded-[32px] bg-white/[0.02] border border-white/5 hover:border-blue-500/20 hover:bg-white/[0.04] transition-all"
                   >
                     <div className="md:col-span-3">
                       <span className="text-xs font-black text-blue-500 uppercase tracking-[0.3em] block mb-2">
                         {exp.period}
                       </span>
-                      <h3 className="text-2xl font-black text-white group-hover:text-blue-400 transition-colors">
-                        {exp.company}
-                      </h3>
-                    </div>
-                    <div className="md:col-span-6">
-                      <p className="text-lg font-bold text-white mb-4 uppercase tracking-tighter">
-                        {exp.role}
-                      </p>
-                      <p className="text-slate-400 mb-6 leading-relaxed">
-                        {exp.description}
-                      </p>
-                      <ul className="space-y-3">
-                        {exp.achievements.map((a, j) => (
-                          <li key={j} className="flex gap-3 text-sm items-start">
-                            <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-                            <span className="text-slate-300">{a}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="md:col-span-3 flex flex-wrap gap-2 content-start">
-                      {exp.tags.map(tag => (
-                        <span key={tag} className="px-3 py-1.5 rounded-lg bg-white/5 text-[9px] font-black uppercase text-slate-400 border border-white/5 tracking-wider">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Skills Matrix */}
-      <section id="habilidades" className="py-32 px-6 bg-white/[0.02]">
-        <div className="max-w-7xl mx-auto">
-          <SectionTitle subtitle="Competências Core">Habilidades Industriais</SectionTitle>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {SKILLS.map((skill, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="p-8 rounded-3xl bg-white/5 border border-white/5 flex flex-col items-center text-center group hover:border-blue-500/50 hover:bg-blue-500/5 transition-all"
-              >
-                <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-blue-500 mb-6 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all">
-                  {skill.icon}
-                </div>
-                <h4 className="text-sm font-black text-white uppercase tracking-widest mb-1">{skill.name}</h4>
-                <p className="text-[10px] font-bold text-blue-400 uppercase tracking-[0.2em] mb-4">{skill.level}% Expertise</p>
-                
-                <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
-                  <motion.div 
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.level}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.5, ease: "circOut" }}
-                    className="h-full bg-blue-500"
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Education Section */}
-      <section id="formação" className="py-32 px-6">
-        <div className="max-w-7xl mx-auto">
-          <SectionTitle subtitle="Base Acadêmica">Formação</SectionTitle>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {EDUCATION.map((edu, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="p-8 rounded-[32px] bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all flex flex-col group"
-              >
-                <span className="text-[9px] font-black uppercase tracking-widest text-blue-500 mb-2">{edu.period}</span>
-                <h4 className="text-xl font-black text-white mb-3 leading-tight group-hover:text-blue-400 transition-colors">{edu.institution}</h4>
-                <p className="text-xs text-slate-400 mb-6 flex-grow">{edu.degree}</p>
-                <div className="flex items-center gap-2">
-                  <div className={`w-1.5 h-1.5 rounded-full ${edu.status === 'Concluído' ? 'bg-emerald-500' : 'bg-amber-500'}`} />
-                  <span className="text-[10px] font-bold uppercase tracking-tighter text-slate-500">{edu.status}</span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Showcase */}
-      <section id="projetos" className="py-32 px-6">
-        <div className="max-w-7xl mx-auto">
-          <SectionTitle subtitle="Execução">Projetos de Impacto</SectionTitle>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {PROJECTS.map((p, i) => (
-              <motion.div
-                key={i}
-                whileHover={{ y: -8 }}
-                className="group relative h-[250px] rounded-[32px] overflow-hidden border border-white/5"
-              >
-                <div className={`absolute inset-0 bg-gradient-to-br ${p.color} opacity-20 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`} />
-                
-                <div className="relative h-full p-6 flex flex-col justify-end bg-gradient-to-t from-[#020617] via-[#020617]/80 to-transparent">
-                  {p.isNew && (
-                    <div className="absolute top-6 left-6 flex items-center gap-2 bg-blue-600 text-white px-2 py-1 rounded-full text-auto text-[7px] font-black uppercase tracking-widest animate-pulse">
-                      <Sparkles className="w-2 h-2" /> New
-                    </div>
-                  )}
-                  
-                  <div className="flex flex-wrap gap-1 mb-4">
-                    {p.tech.map(t => (
-                      <span key={t} className="text-[7px] font-black uppercase tracking-widest bg-white/10 text-white px-2 py-0.5 rounded-md backdrop-blur-md">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <h3 className="text-xl font-black text-white mb-2 group-hover:translate-x-1 transition-transform duration-500">
-                    {p.title}
-                  </h3>
-                  <p className="text-[10px] text-slate-400 mb-2 line-clamp-2">
-                    {p.desc}
-                  </p>
-                </div>
-
-                {/* Industrial Grid Overlay */}
-                <div className="absolute top-0 right-0 p-4 text-white/5 pointer-events-none">
-                  <Box className="w-12 h-12" />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* GitHub Repos Grid */}
-          <div className="mt-24 p-12 rounded-[40px] bg-white/[0.01] border border-white/5">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-              <div>
-                <SectionTitle subtitle="Open Source">Repositórios GitHub</SectionTitle>
-                <div className="text-slate-500 text-sm max-w-md -mt-8 font-mono">
-                  {'//'} Explore outros projetos técnicos e scripts de automação.
-                </div>
-              </div>
-              <motion.a 
-                href="https://github.com/Devolprodrigov"
-                target="_blank"
-                rel="noreferrer"
-                whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-3 px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-blue-500 transition-all text-xs font-black uppercase tracking-widest text-white mb-4"
-              >
-                Ver Perfil Completo <ExternalLink className="w-4 h-4 text-blue-500" />
-              </motion.a>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {GITHUB_REPOS.map((repo, i) => (
-                <motion.a
-                  key={i}
-                  href={repo.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="overflow-hidden rounded-2xl bg-white/5 border border-white/5 hover:border-blue-500/30 hover:bg-white/10 transition-all group"
-                >
-                  <div className="h-40 overflow-hidden relative border-b border-white/5">
-                    <img 
-                      src={repo.image} 
-                      alt={repo.name} 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      referrerPolicy="no-referrer"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        if (!target.src.includes('unsplash')) {
-                          target.src = `https://images.unsplash.com/photo-${
-                            repo.name.includes('Beauty') ? '1596462502278-27bfdc4033c8' :
-                            repo.name.includes('Reciclagem') ? '1532996122724-e3c354a0b15b' :
-                            repo.name.includes('Perfumes') ? '1541643600914-78b084683601' :
-                            '1551288049-bbbda5366391'
-                          }?auto=format&fit=crop&q=80&w=800`;
-                        }
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#020617] to-transparent opacity-60" />
-                    <div className="absolute top-4 left-4 p-2 rounded-lg bg-blue-500/20 backdrop-blur-md text-blue-500 border border-blue-500/20">
-                      <Layout className="w-4 h-4" />
-                    </div>
-                  </div>
-                  
-                  <div className="p-6">
-                    <div className="flex justify-between items-center mb-2">
-                      <h4 className="text-sm font-black text-white group-hover:text-blue-400 transition-colors">
-                        {repo.name}
-                      </h4>
-                      <div className="text-[8px] font-bold text-blue-500 uppercase tracking-widest px-2 py-1 rounded bg-blue-500/10">
-                        Live
-                      </div>
-                    </div>
-                    <p className="text-[10px] text-slate-500 leading-relaxed mb-4 h-8 overflow-hidden">
-                      {repo.desc}
-                    </p>
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-blue-500" />
-                      <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{repo.tech}</span>
-                    </div>
-                  </div>
-                </motion.a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Terminal Contact Section */}
-      <section id="contato" className="py-32 px-6">
-        <div className="max-w-4xl mx-auto rounded-[40px] bg-white/[0.02] border border-white/5 overflow-hidden">
-          <div className="flex items-center gap-2 px-6 py-4 bg-white/5 border-b border-white/10">
-            <div className="w-3 h-3 rounded-full bg-red-500/50" />
-            <div className="w-3 h-3 rounded-full bg-amber-500/50" />
-            <div className="w-3 h-3 rounded-full bg-emerald-500/50" />
-            <span className="ml-4 text-[10px] font-mono text-slate-500 uppercase tracking-widest">msg_channel_01.exe</span>
-          </div>
-          
-          <div className="p-12">
-            <div className="grid lg:grid-cols-2 gap-16">
-              <div>
-                <h3 className="text-4xl font-black text-white mb-6">BORAVENCER<span className="text-blue-500">?</span></h3>
-                <p className="text-slate-400 mb-10 leading-relaxed font-mono text-sm">
-                  Início da transmissão... <br />
-                  Aguardando inputs para novos desafios em Ciência de Dados, BI e Agentes de IA.
-                </p>
-                
-                <div className="space-y-4">
-                  {[
-                    { label: 'E-mail', val: 'rodrigovieiradev@outlook.com', href: 'mailto:rodrigovieiradev@outlook.com' },
-                    { label: 'WhatsApp', val: '+55 41 99927-9828', href: 'https://wa.me/5541999279828' },
-                    { label: 'LinkedIn', val: 'rodrigo-vieira-408b6295', href: 'https://www.linkedin.com/in/rodrigo-vieira-408b6295/' },
-                    { label: 'Portfolio AI', val: 'Agent-Generated', href: '#' }
-                  ].map((c, i) => (
-                    <a key={i} href={c.href} target="_blank" rel="noreferrer" className="group flex items-center gap-4 text-xs font-mono">
-                      <span className="text-blue-500">{'>'}</span>
-                      <span className="text-slate-500 uppercase tracking-widest group-hover:text-blue-400 transition-colors">{c.label}:</span>
-                      <span className="text-white truncate">{c.val}</span>
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              <form onSubmit={e => e.preventDefault()} className="space-y-6">
-                <input type="text" placeholder="SUBJECT_IDENTIFIER" className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-xl text-xs font-mono focus:border-blue-500/50 outline-none" />
-                <textarea rows={4} placeholder="TRANSMISSION_CONTENT" className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-xl text-xs font-mono focus:border-blue-500/50 outline-none resize-none" />
-                <button className="w-full py-5 bg-blue-600 text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-xl hover:bg-white hover:text-black transition-all shadow-xl shadow-blue-600/10">
-                  Transmitir Mensagem
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-20 px-6 border-t border-white/5">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
-          <div>
-            <div className="flex items-center gap-2 mb-4 justify-center md:justify-start">
-              <Box className="w-6 h-6 text-blue-500" />
-              <div className="text-xl font-black text-white">RODRIGO<span className="text-blue-500">.</span>DEV</div>
-            </div>
-            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 max-w-xs">
-              SISTEMA OTIMIZADO PARA ALTA PERFORMANCE E DECISÕES BASEADAS EM DADOS.
-            </p>
-          </div>
-          
-          <div className="flex gap-12">
-            <div>
-              <h5 className="text-[10px] font-black text-white uppercase tracking-widest mb-4">Mídias</h5>
-              <div className="flex gap-4">
-                <a href="https://github.com/Devolprodrigov" target="_blank" rel="noreferrer"><Github className="w-5 h-5 hover:text-white cursor-pointer" /></a>
-                <a href="https://www.linkedin.com/in/rodrigo-vieira-408b6295/" target="_blank" rel="noreferrer"><Linkedin className="w-5 h-5 hover:text-blue-500 cursor-pointer" /></a>
-              </div>
-            </div>
-            <div>
-              <h5 className="text-[10px] font-black text-white uppercase tracking-widest mb-4">Créditos</h5>
-              <div className="text-[10px] uppercase font-bold tracking-widest text-slate-500">
-                AI Agent Built @ 2024
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
-}
+                      <h3 className="text-2xl font-black text-white group-hover:text-
