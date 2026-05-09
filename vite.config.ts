@@ -3,16 +3,13 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import { defineConfig, loadEnv } from 'vite';
 
-// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
-  // Carrega as variáveis de ambiente (como a GEMINI_API_KEY)
   const env = loadEnv(mode, process.cwd(), '');
 
   return {
-    // IMPORTANTE: Altere para o nome exato do seu repositório no GitHub
-    // Se o seu repositório for https://github.com/Devolprodrigov/rodrigo-dev-portfolio
-    // O base deve ser '/rodrigo-dev-portfolio/'
-    base: mode === 'production' ? '/rodrigo-dev-portfolio/' : '/',
+    // Como o nome do repositório é igual ao seu nome de usuário (Devolprodrigov),
+    // o GitHub Pages o trata como o site principal do perfil.
+    base: mode === 'production' ? '/Devolprodrigov/' : '/',
 
     plugins: [
       react(),
@@ -25,22 +22,18 @@ export default defineConfig(({ mode }) => {
 
     resolve: {
       alias: {
-        // Permite usar importações como '@/components/...'
-        '@': path.resolve(__dirname, './src'),
+        '@': path.resolve(__dirname, '.'),
       },
     },
 
     server: {
       port: 3000,
       host: '0.0.0.0',
-      // Desabilita HMR se estiver em ambientes restritos, caso contrário mantém ativo
       hmr: process.env.DISABLE_HMR !== 'true',
     },
 
     build: {
       outDir: 'dist',
-      sourcemap: false,
-      // Garante que os assets sejam gerados com nomes consistentes
       rollupOptions: {
         output: {
           manualChunks: {
