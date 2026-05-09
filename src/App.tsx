@@ -419,4 +419,211 @@ export default function App() {
                       <span className="text-xs font-black text-blue-500 uppercase tracking-[0.3em] block mb-2">
                         {exp.period}
                       </span>
-                      <h3 className="text-2xl font-black text-white group-hover:text-
+                      <h3 className="text-2xl font-black text-white group-hover:text-blue-400 transition-colors">
+                        {exp.company}
+                      </h3>
+                    </div>
+                    <div className="md:col-span-6">
+                      <p className="text-lg font-bold text-white mb-4 uppercase tracking-tighter">
+                        {exp.role}
+                      </p>
+                      <p className="text-slate-400 mb-6 leading-relaxed">
+                        {exp.description}
+                      </p>
+                      <ul className="space-y-3">
+                        {exp.achievements.map((a, j) => (
+                          <li key={j} className="flex gap-3 text-sm items-start">
+                            <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
+                            <span className="text-slate-300">{a}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="md:col-span-3 flex flex-wrap gap-2 content-start">
+                      {exp.tags.map(tag => (
+                        <span key={tag} className="px-3 py-1.5 rounded-lg bg-white/5 text-[9px] font-black uppercase text-slate-400 border border-white/5 tracking-wider">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Matrix */}
+      <section id="habilidades" className="py-32 px-6 bg-white/[0.02]">
+        <div className="max-w-7xl mx-auto">
+          <SectionTitle subtitle="Competências Core">Habilidades Industriais</SectionTitle>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {SKILLS.map((skill, i) => (
+              <motion.div
+                key={i}
+                className="p-8 rounded-3xl bg-white/5 border border-white/5 flex flex-col items-center text-center group hover:border-blue-500/50 hover:bg-blue-500/5 transition-all"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-blue-500 mb-6 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                  {skill.icon}
+                </div>
+                <h4 className="text-sm font-black text-white uppercase tracking-widest mb-1">{skill.name}</h4>
+                <p className="text-[10px] font-bold text-blue-400 uppercase tracking-[0.2em] mb-4">{skill.level}% Expertise</p>
+                <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
+                  <div className="h-full bg-blue-500" style={{ width: `${skill.level}%` }} />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section id="formação" className="py-32 px-6">
+        <div className="max-w-7xl mx-auto">
+          <SectionTitle subtitle="Base Acadêmica">Formação</SectionTitle>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {EDUCATION.map((edu, i) => (
+              <motion.div
+                key={i}
+                className="p-8 rounded-[32px] bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all flex flex-col group"
+              >
+                <span className="text-[9px] font-black uppercase tracking-widest text-blue-500 mb-2">{edu.period}</span>
+                <h4 className="text-xl font-black text-white mb-3 leading-tight group-hover:text-blue-400 transition-colors">{edu.institution}</h4>
+                <p className="text-xs text-slate-400 mb-6 flex-grow">{edu.degree}</p>
+                <div className="flex items-center gap-2">
+                  <div className={`w-1.5 h-1.5 rounded-full ${edu.status === 'Concluído' ? 'bg-emerald-500' : 'bg-amber-500'}`} />
+                  <span className="text-[10px] font-bold uppercase tracking-tighter text-slate-500">{edu.status}</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Showcase */}
+      <section id="projetos" className="py-32 px-6">
+        <div className="max-w-7xl mx-auto">
+          <SectionTitle subtitle="Execução">Projetos de Impacto</SectionTitle>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {PROJECTS.map((p, i) => (
+              <motion.div
+                key={i}
+                className="group relative h-[250px] rounded-[32px] overflow-hidden border border-white/5"
+              >
+                <div className={`absolute inset-0 bg-gradient-to-br ${p.color} opacity-20 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`} />
+                <div className="relative h-full p-6 flex flex-col justify-end bg-gradient-to-t from-[#020617] via-[#020617]/80 to-transparent">
+                  <div className="flex flex-wrap gap-1 mb-4">
+                    {p.tech.map(t => (
+                      <span key={t} className="text-[7px] font-black uppercase tracking-widest bg-white/10 text-white px-2 py-0.5 rounded-md backdrop-blur-md">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <h3 className="text-xl font-black text-white mb-2 group-hover:translate-x-1 transition-transform duration-500">
+                    {p.title}
+                  </h3>
+                  <p className="text-[10px] text-slate-400 mb-2 line-clamp-2">
+                    {p.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* GitHub Repos Grid */}
+          <div className="mt-24 p-12 rounded-[40px] bg-white/[0.01] border border-white/5">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+              <div>
+                <SectionTitle subtitle="Open Source">Repositórios GitHub</SectionTitle>
+                <div className="text-slate-500 text-sm max-w-md -mt-8 font-mono">
+                  {'//'} Explore outros projetos técnicos e scripts de automação.
+                </div>
+              </div>
+              <motion.a 
+                href="https://github.com/Devolprodrigov"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-blue-500 transition-all text-xs font-black uppercase tracking-widest text-white mb-4"
+              >
+                Ver Perfil Completo <ExternalLink className="w-4 h-4 text-blue-500" />
+              </motion.a>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {GITHUB_REPOS.map((repo, i) => (
+                <motion.a
+                  key={i}
+                  href={repo.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="overflow-hidden rounded-2xl bg-white/5 border border-white/5 hover:border-blue-500/30 hover:bg-white/10 transition-all group"
+                >
+                  <div className="h-40 overflow-hidden relative border-b border-white/5">
+                    <img src={repo.image} alt={repo.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <div className="p-6">
+                      <h4 className="text-sm font-black text-white group-hover:text-blue-400 transition-colors">{repo.name}</h4>
+                      <p className="text-[10px] text-slate-500 leading-relaxed mb-4">{repo.desc}</p>
+                    </div>
+                  </div>
+                </motion.a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Terminal Contact Section */}
+      <section id="contato" className="py-32 px-6">
+        <div className="max-w-4xl mx-auto rounded-[40px] bg-white/[0.02] border border-white/5 overflow-hidden">
+          <div className="flex items-center gap-2 px-6 py-4 bg-white/5 border-b border-white/10">
+            <div className="w-3 h-3 rounded-full bg-red-500/50" />
+            <div className="w-3 h-3 rounded-full bg-amber-500/50" />
+            <div className="w-3 h-3 rounded-full bg-emerald-500/50" />
+            <span className="ml-4 text-[10px] font-mono text-slate-500 uppercase tracking-widest">msg_channel_01.exe</span>
+          </div>
+          <div className="p-12">
+            <div className="grid lg:grid-cols-2 gap-16">
+              <div>
+                <h3 className="text-4xl font-black text-white mb-6">BORAVENCER<span className="text-blue-500">?</span></h3>
+                <div className="space-y-4">
+                  {[
+                    { label: 'E-mail', val: 'rodrigovieiradev@outlook.com', href: 'mailto:rodrigovieiradev@outlook.com' },
+                    { label: 'WhatsApp', val: '+55 41 99927-9828', href: 'https://wa.me/5541999279828' }
+                  ].map((c, i) => (
+                    <a key={i} href={c.href} target="_blank" rel="noreferrer" className="group flex items-center gap-4 text-xs font-mono">
+                      <span className="text-blue-500">{'>'}</span>
+                      <span className="text-slate-500 uppercase tracking-widest group-hover:text-blue-400 transition-colors">{c.label}:</span>
+                      <span className="text-white truncate">{c.val}</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+              <form onSubmit={e => e.preventDefault()} className="space-y-6">
+                <input type="text" placeholder="SUBJECT_IDENTIFIER" className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-xl text-xs font-mono focus:border-blue-500/50 outline-none" />
+                <textarea rows={4} placeholder="TRANSMISSION_CONTENT" className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-xl text-xs font-mono focus:border-blue-500/50 outline-none resize-none" />
+                <button className="w-full py-5 bg-blue-600 text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-xl hover:bg-white hover:text-black transition-all">
+                  Transmitir Mensagem
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-20 px-6 border-t border-white/5">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
+          <div className="flex items-center gap-2 mb-4 justify-center md:justify-start">
+            <Box className="w-6 h-6 text-blue-500" />
+            <div className="text-xl font-black text-white">RODRIGO<span className="text-blue-500">.</span>DEV</div>
+          </div>
+          <div className="flex gap-4">
+            <a href="https://github.com/Devolprodrigov" target="_blank" rel="noreferrer"><Github className="w-5 h-5 hover:text-white cursor-pointer" /></a>
+            <a href="https://www.linkedin.com/in/rodrigo-vieira-408b6295/" target="_blank" rel="noreferrer"><Linkedin className="w-5 h-5 hover:text-blue-500 cursor-pointer" /></a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
