@@ -1,13 +1,19 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import {defineConfig, loadEnv} from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 
-export default defineConfig(({mode}) => {
+// https://vitejs.dev/config/
+export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
+  
   return {
-    base: './', // Use relative paths to make it work on GitHub Pages
-    plugins: [react(), tailwindcss()],
+    // Ajustado para o nome do seu repositório no GitHub
+    base: '/rodrigo-dev-portfolio/', 
+    plugins: [
+      react(), 
+      tailwindcss()
+    ],
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
     },
@@ -17,9 +23,12 @@ export default defineConfig(({mode}) => {
       },
     },
     server: {
-      // HMR is disabled in AI Studio via DISABLE_HMR env var.
-      // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
+      // Mantendo a configuração de HMR original do seu arquivo
       hmr: process.env.DISABLE_HMR !== 'true',
     },
+    build: {
+      // Garante que o build seja gerado de forma limpa
+      outDir: 'dist',
+    }
   };
 });
