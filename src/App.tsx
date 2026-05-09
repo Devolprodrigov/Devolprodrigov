@@ -170,7 +170,7 @@ const GITHUB_REPOS = [
     desc: "Plataforma de revenda oficial focada em estética e beleza, com checkout otimizado para conversão via WhatsApp.",
     url: "https://beauty-sabrina.vercel.app/",
     tech: "React / Vercel",
-    image: "./imagens/sabrina.jpg"
+    image: "./imagens/sabrina.png"
   },
   {
     name: "Adriana Reciclagem",
