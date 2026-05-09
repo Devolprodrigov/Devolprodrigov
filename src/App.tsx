@@ -32,22 +32,22 @@ import { motion, AnimatePresence, useScroll, useSpring } from 'motion/react';
 
 const TECH_STACK = [
   "Analista de Dados", 
-  "Especialista em BI", 
+  "Looker Studio e BI", 
   "Python Expert", 
   "SQL Specialist", 
-  "Engenheiro de Automação", 
+  "Automação de Processos", 
   "Google Apps Script / AppsSheet"
 ];
 
 const SKILLS = [
-  { name: 'Power BI', level: 98, icon: <BarChart3 className="w-5 h-5" /> },
+  { name: 'Power BI', level: 80, icon: <BarChart3 className="w-5 h-5" /> },
   { name: 'Python (Pandas)', level: 95, icon: <Code className="w-5 h-5" /> },
-  { name: 'SQL Server', level: 92, icon: <Database className="w-5 h-5" /> },
-  { name: 'Looker Studio', level: 90, icon: <Layout className="w-5 h-5" /> },
+  { name: 'SQL Server', level: 80, icon: <Database className="w-5 h-5" /> },
+  { name: 'Looker Studio', level: 95, icon: <Layout className="w-5 h-5" /> },
   { name: 'Google Apps Script', level: 92, icon: <Terminal className="w-5 h-5" /> },
   { name: 'AppSheet', level: 88, icon: <Cpu className="w-5 h-5" /> },
   { name: 'RPA / Automação', level: 94, icon: <Workflow className="w-5 h-5" /> },
-  { name: 'AI Solutions', level: 85, icon: <Bot className="w-5 h-5" /> },
+  { name: 'AI Solutions', level: 90, icon: <Bot className="w-5 h-5" /> },
 ];
 
 const EXPERIENCES = [
@@ -170,7 +170,7 @@ const GITHUB_REPOS = [
     desc: "Plataforma de revenda oficial focada em estética e beleza, com checkout otimizado para conversão via WhatsApp.",
     url: "https://beauty-sabrina.vercel.app/",
     tech: "React / Vercel",
-    image: "https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?auto=format&fit=crop&q=80&w=800"
+    image: "./imagens/sabrina.jpg"
   },
   {
     name: "Adriana Reciclagem",
