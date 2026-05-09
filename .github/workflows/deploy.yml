@@ -1,49 +1,66 @@
-name: Deploy static content to Pages
+# Nome do Workflow
+name: Deploy Portfolio to GitHub Pages
 
 on:
+  # Dispara o workflow sempre que houver um push na branch main
   push:
     branches: ["main"]
+  # Permite rodar o workflow manualmente pela aba Actions
   workflow_dispatch:
 
+# Variáveis globais para resolver o aviso de depreciação do Node 20
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+# Configurações de permissões necessárias para o GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Garante que apenas um deploy ocorra por vez
 concurrency:
   group: "pages"
   cancel-in-progress: true
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'npm'
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Compilar projeto (Build)
+        run: npm run build
+        # Se você tiver variáveis de ambiente sensíveis, elas entrariam aqui:
+        # env:
+        #   VITE_GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload do artefato
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # O Vite gera os arquivos na pasta 'dist' por padrão
+          path: './dist'
+
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    needs: build
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          # Removido o cache de npm para evitar o erro de falta do lockfile
-          
-      - name: Install dependencies
-        run: npm install
-        
-      - name: Build
-        run: npm run build
-        
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-        
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './dist'
-          
-      - name: Deploy to GitHub Pages
+      - name: Deploy para GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
