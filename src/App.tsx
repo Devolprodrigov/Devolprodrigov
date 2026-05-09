@@ -176,14 +176,14 @@ const GITHUB_REPOS = [
     name: "Adriana Reciclagem",
     desc: "Solução industrial para gestão de resíduos, com dashboard completo de controle financeiro e IA Insights.",
     url: "https://adriana-reciclagem.vercel.app/",
-    tech: "Tailwind CSS / Firebase",
+    tech: "React / Firebase",
     image: "image/adriana.png"
   },
   {
     name: "Rabia Perfumes",
     desc: "Catálogo premium de fragrâncias exclusivas (Árabes e Importados) com design de luxo e navegação fluida.",
     url: "https://rabia-perfumes-k1nh.vercel.app/",
-    tech: "Framer Motion",
+    tech: "Framer Motion / Tailwind",
     image: "image/perfume.png"
   },
   {
