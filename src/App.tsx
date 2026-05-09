@@ -187,11 +187,11 @@ const GITHUB_REPOS = [
     image: "image/perfume.png"
   },
   {
-    name: "Data Automation Pro",
+    name: "App Data Automation",
     desc: "Scripts avançados de integração e limpeza de dados industriais para automação de processos.",
     url: "https://github.com/Devolprodrigov",
     tech: "Python / SQL",
-    image: "https://images.unsplash.com/photo-1551288049-bbbda5366391?auto=format&fit=crop&q=80&w=800"
+    image: "image/safety.jpg"
   }
 ];
 
