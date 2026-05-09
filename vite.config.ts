@@ -1,46 +1,31 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
+import { fileURLToPath } from 'url';
 import path from 'path';
-import { defineConfig, loadEnv } from 'vite';
 
-export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), '');
+// Simulação do __dirname para módulos ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-  return {
-    // Como o nome do repositório é igual ao seu nome de usuário (Devolprodrigov),
-    // o GitHub Pages o trata como o site principal do perfil.
-    base: mode === 'production' ? '/Devolprodrigov/' : '/',
-
-    plugins: [
-      react(),
-      tailwindcss()
-    ],
-
-    define: {
-      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
+export default defineConfig({
+  // O nome do repositório DEVE ser exatamente este (maiúsculas/minúsculas importam)
+  base: '/Devolprodrigov/', 
+  
+  plugins: [
+    react(), 
+    tailwindcss()
+  ],
+  
+  resolve: {
+    alias: {
+      // Isso permite que você use importações como '@/components/...'
+      '@': path.resolve(__dirname, './src'),
     },
+  },
 
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, '.'),
-      },
-    },
-
-    server: {
-      port: 3000,
-      host: '0.0.0.0',
-      hmr: process.env.DISABLE_HMR !== 'true',
-    },
-
-    build: {
-      outDir: 'dist',
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            vendor: ['react', 'react-dom', 'react-router-dom'],
-          },
-        },
-      },
-    },
-  };
+  build: {
+    outDir: 'dist',
+    emptyOutDir: true,
+  }
 });
