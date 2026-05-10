@@ -168,7 +168,7 @@ const GITHUB_REPOS = [
   {
     name: "Beauty Sabrina",
     desc: "Plataforma de revenda oficial focada em estética e beleza, com checkout otimizado para conversão via WhatsApp.",
-    url: "https://beauty-sabrina.vercel.app/",
+    url: "https://devolprodrigov.github.io/beauty-sabrina/",
     tech: "React / Vercel",
     image: "image/sabrina.png" 
   },
