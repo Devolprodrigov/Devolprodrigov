@@ -58,11 +58,13 @@ const EXPERIENCES = [
     description: "Elevação do padrão de SST através da inteligência de dados e automação estratégica.",
     tags: ["Power BI", "RPA", "Predictive Analytics", "Consultoria Técnica"],
     achievements: [
-      'Gestão de SST 4.0: Desenvolvimento de dashboards corporativos e sistemas inteligentes para monitoramento de KPIs, indicadores de segurança e tomada de decisão estratégica',
+      'Desenvolvedor de Sistemas e Arquiteto de Soluções com foco na criação de plataformas sob medida, automação de processos e ERPs corporativos.
 
-'Automação de Conformidade Legal: Desenvolvimento de soluções digitais para gestão de prazos de ASOs, controle de EPIs e acompanhamento de requisitos normativos',
+Desenvolvimento de Software: Criação de aplicações web completas (front-end e back-end), como o ecossistema do ERP, focando em usabilidade, performance e automação de rotinas logísticas e financeiras.
 
-'Inteligência Artificial aplicada à SST: Desenvolvimento de análises preditivas de riscos ocupacionais, identificação de padrões e soluções orientadas à prevenção de acidentes industriais'
+Stack Tecnológica: Experiência prática com React, Vite, Tailwind CSS, TypeScript, Firebase, Python e Google Apps Script.
+
+Business Intelligence & Dados: Concepção de painéis analíticos avançados em Power BI e Looker Studio para governança e suporte direto à tomada de decisão estratégica.'
     ]
   },
   {
