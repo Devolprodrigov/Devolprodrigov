@@ -58,9 +58,11 @@ const EXPERIENCES = [
     description: "Elevação do padrão de SST através da inteligência de dados e automação estratégica.",
     tags: ["Power BI", "RPA", "Predictive Analytics", "Consultoria Técnica"],
     achievements: [
-      "Gestão de SST 4.0: Dashboards dinâmicos para visualização de KPIs em tempo real",
-      "Automação de Conformidade: Sistemas para controle de prazos de ASOs e EPIs",
-      "Análise Preditiva de Riscos para prevenção de acidentes industriais"
+      'Gestão de SST 4.0: Desenvolvimento de dashboards corporativos e sistemas inteligentes para monitoramento de KPIs, indicadores de segurança e tomada de decisão estratégica',
+
+'Automação de Conformidade Legal: Desenvolvimento de soluções digitais para gestão de prazos de ASOs, controle de EPIs e acompanhamento de requisitos normativos',
+
+'Inteligência Artificial aplicada à SST: Desenvolvimento de análises preditivas de riscos ocupacionais, identificação de padrões e soluções orientadas à prevenção de acidentes industriais'
     ]
   },
   {
