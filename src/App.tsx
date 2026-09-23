@@ -48,9 +48,9 @@ const SKILLS = [
 const EXPERIENCES = [
   {
     company: "RRV CONSULTORIA",
-    role: "Proprietário / Administrador",
+    role: "Desenvolvedor",
     period: "Dezembro 2025 - Presente",
-    description: "Elevação do padrão de SST através da inteligência de dados e automação estratégica.",
+    description: "Elevação do padrão de programação através da inteligência de dados e automação estratégica.",
     tags: ["Power BI", "RPA", "Predictive Analytics", "Consultoria Técnica"],
     achievements: [
       "Desenvolvedor de Sistemas e Arquiteto de Soluções com foco na criação de plataformas sob medida, automação de processos e ERPs corporativos.",
@@ -61,7 +61,7 @@ const EXPERIENCES = [
   },
   {
     company: "SHOPEE",
-    role: "Senior Associate",
+    role: "Analista Sênior",
     period: "Julho 2022 - Outubro 2025",
     description: "Liderança de iniciativas de BI e automação para Operações e HSE.",
     tags: ["Google Apps Script", "SeaTalk API", "SQL", "Looker Studio"],
