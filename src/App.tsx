@@ -43,6 +43,14 @@ const SKILLS = [
   { name: 'AppSheet', level: 88, icon: <Cpu className="w-5 h-5" /> },
   { name: 'RPA / Automação', level: 94, icon: <Workflow className="w-5 h-5" /> },
   { name: 'AI Solutions', level: 90, icon: <Bot className="w-5 h-5" /> },
+  { name: 'Firebase', level: 80, icon: <BarChart3 className="w-5 h-5" /> },
+  { name: 'TypeScript)', level: 95, icon: <Code className="w-5 h-5" /> },
+  { name: 'SQL Server', level: 80, icon: <Database className="w-5 h-5" /> },
+  { name: 'Looker Studio', level: 95, icon: <Layout className="w-5 h-5" /> },
+  { name: 'React', level: 90, icon: <Code className="w-5 h-5" /> }, // Sugestão
+  { name: 'Google Apps Script', level: 92, icon: <Terminal className="w-5 h-5" /> },
+  { name: 'AppSheet & Firebase', level: 88, icon: <Cpu className="w-5 h-5" /> }, // Sugestão
+  { name: 'Automação & APIs', level: 94, icon: <Workflow className="w-5 h-5" /> },
 ];
 
 const EXPERIENCES = [
