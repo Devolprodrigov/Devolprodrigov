@@ -58,15 +58,11 @@ const EXPERIENCES = [
     description: "Elevação do padrão de SST através da inteligência de dados e automação estratégica.",
     tags: ["Power BI", "RPA", "Predictive Analytics", "Consultoria Técnica"],
     achievements: [
-      
-      "Desenvolvedor de Sistemas e Arquiteto de Soluções com foco na criação de plataformas sob medida, automação de processos e ERPs corporativos."
-
-      "Desenvolvimento de Software: Criação de aplicações web completas (front-end e back-end), como o ecossistema do ERP, focando em usabilidade, performance e automação de rotinas logísticas e financeiras."
-
-      "Stack Tecnológica: Experiência prática com React, Vite, Tailwind CSS, TypeScript, Firebase, Python e Google Apps Script."
-
-      "Business Intelligence & Dados: Concepção de painéis analíticos avançados em Power BI e Looker Studio para governança e suporte direto à tomada de decisão estratégica."
-    ]
+    "Desenvolvedor de Sistemas e Arquiteto de Soluções com foco na criação de plataformas sob medida, automação de processos e ERPs corporativos.",
+    "Desenvolvimento de Software: Criação de aplicações web completas (front-end e back-end), como o ecossistema do ERP, focando em usabilidade, performance e automação de rotinas logísticas e financeiras.",
+    "Stack Tecnológica: Experiência prática com React, Vite, Tailwind CSS, TypeScript, Firebase, Python e Google Apps Script.",
+    "Business Intelligence & Dados: Concepção de painéis analíticos avançados em Power BI e Looker Studio para governança e suporte direto à tomada de decisão estratégica."
+  ];
   },
   {
     company: "SHOPEE",
