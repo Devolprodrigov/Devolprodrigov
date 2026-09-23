@@ -129,7 +129,7 @@ const EDUCATION = [
     degree: "Bacharelado em Administração e Negócios",
     period: "2018 - 2021",
     status: "Concluído"
-  }
+  },
   {
     institution: "Colegio Humberto de Alencar Castelo Branco",
     degree: "Técnico em Segurança do Trabalho",
