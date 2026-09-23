@@ -12,23 +12,18 @@ import {
   Linkedin, 
   Github, 
   Mail, 
-  ChevronRight, 
   ExternalLink, 
   Terminal, 
   Layers, 
   Workflow,
   CheckCircle2,
-  Phone,
-  Send,
   Zap,
-  TrendingUp,
-  Layout,
   Briefcase,
-  Sparkles,
   Bot,
-  Box
+  Box,
+  Layout
 } from 'lucide-react';
-import { motion, AnimatePresence, useScroll, useSpring } from 'motion/react';
+import { motion, useScroll, useSpring } from 'motion/react';
 
 const TECH_STACK = [
   "Analista de Dados", 
@@ -58,11 +53,11 @@ const EXPERIENCES = [
     description: "Elevação do padrão de SST através da inteligência de dados e automação estratégica.",
     tags: ["Power BI", "RPA", "Predictive Analytics", "Consultoria Técnica"],
     achievements: [
-    "Desenvolvedor de Sistemas e Arquiteto de Soluções com foco na criação de plataformas sob medida, automação de processos e ERPs corporativos.",
-    "Desenvolvimento de Software: Criação de aplicações web completas (front-end e back-end), como o ecossistema do ERP, focando em usabilidade, performance e automação de rotinas logísticas e financeiras.",
-    "Stack Tecnológica: Experiência prática com React, Vite, Tailwind CSS, TypeScript, Firebase, Python e Google Apps Script.",
-    "Business Intelligence & Dados: Concepção de painéis analíticos avançados em Power BI e Looker Studio para governança e suporte direto à tomada de decisão estratégica."
-  ];
+      "Desenvolvedor de Sistemas e Arquiteto de Soluções com foco na criação de plataformas sob medida, automação de processos e ERPs corporativos.",
+      "Desenvolvimento de Software: Criação de aplicações web completas (front-end e back-end), como o ecossistema do ERP, focando em usabilidade, performance e automação de rotinas logísticas e financeiras.",
+      "Stack Tecnológica: Experiência prática com React, Vite, Tailwind CSS, TypeScript, Firebase, Python e Google Apps Script.",
+      "Business Intelligence & Dados: Concepção de painéis analíticos avançados em Power BI e Looker Studio para governança e suporte direto à tomada de decisão estratégica."
+    ]
   },
   {
     company: "SHOPEE",
@@ -196,7 +191,6 @@ const GITHUB_REPOS = [
   }
 ];
 
-
 const SectionTitle = ({ children, subtitle }: { children: React.ReactNode, subtitle?: string }) => (
   <div className="mb-16">
     <motion.div
@@ -235,12 +229,11 @@ export default function App() {
     restDelta: 0.001
   });
 
-  // FUNÇÃO DE SCROLL SUAVE PARA OS MENUS
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
-      const offset = 80; // Compensação da altura do header fixo
+      const offset = 80;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -277,22 +270,18 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#020617] text-slate-300 font-sans selection:bg-blue-500/30 overflow-x-hidden">
-      {/* ProgressBar */}
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-blue-500 z-[100] origin-left" style={{ scaleX }} />
 
-      {/* Decorative Grid Background */}
       <div className="fixed inset-0 pointer-events-none z-0 opacity-20">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:40px_40px]" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#020617] to-[#020617]" />
       </div>
 
-      {/* Glowing Orbs */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-600/10 rounded-full blur-[120px]" />
         <div className="absolute bottom-[10%] right-[-5%] w-[40%] h-[40%] bg-purple-600/10 rounded-full blur-[120px]" />
       </div>
 
-      {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 border-b border-white/5 bg-[#020617]/80 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <motion.div 
@@ -333,7 +322,6 @@ export default function App() {
         </div>
       </nav>
 
-      {/* Hero Section */}
       <section id="início" className="relative pt-40 pb-24 md:pt-64 md:pb-40 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -365,22 +353,21 @@ export default function App() {
               <span className="w-2 h-10 bg-blue-600 ml-2 animate-pulse" />
             </div>
 
-              <div className="flex gap-4">
-                <a href="https://www.linkedin.com/in/rodrigo-vieira-408b6295/" target="_blank" rel="noreferrer" className="p-5 rounded-2xl border border-white/5 bg-white/5 hover:bg-white/10 hover:border-blue-500/50 transition-all">
-                  <Linkedin className="w-5 h-5 text-slate-400 hover:text-white" />
-                </a>
-                <a href="https://github.com/Devolprodrigov" target="_blank" rel="noreferrer" className="p-5 rounded-2xl border border-white/5 bg-white/5 hover:bg-white/10 hover:border-blue-500/50 transition-all">
-                  <Github className="w-5 h-5 text-slate-400 hover:text-white" />
-                </a>
-                <a href="mailto:rodrigovieiradev@outlook.com" className="p-5 rounded-2xl border border-white/5 bg-white/5 hover:bg-white/10 hover:border-blue-500/50 transition-all">
-                  <Mail className="w-5 h-5 text-slate-400 hover:text-white" />
-                </a>
-              </div>
+            <div className="flex gap-4">
+              <a href="https://www.linkedin.com/in/rodrigo-vieira-408b6295/" target="_blank" rel="noreferrer" className="p-5 rounded-2xl border border-white/5 bg-white/5 hover:bg-white/10 hover:border-blue-500/50 transition-all">
+                <Linkedin className="w-5 h-5 text-slate-400 hover:text-white" />
+              </a>
+              <a href="https://github.com/Devolprodrigov" target="_blank" rel="noreferrer" className="p-5 rounded-2xl border border-white/5 bg-white/5 hover:bg-white/10 hover:border-blue-500/50 transition-all">
+                <Github className="w-5 h-5 text-slate-400 hover:text-white" />
+              </a>
+              <a href="mailto:rodrigovieiradev@outlook.com" className="p-5 rounded-2xl border border-white/5 bg-white/5 hover:bg-white/10 hover:border-blue-500/50 transition-all">
+                <Mail className="w-5 h-5 text-slate-400 hover:text-white" />
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Stats Bar */}
       <section className="py-20 px-6 border-y border-white/5 bg-white/[0.02]">
         <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-12">
           {[
@@ -404,7 +391,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* Professional Summary */}
       <section id="carreira" className="py-32 px-6">
         <div className="max-w-7xl mx-auto">
           <SectionTitle subtitle="Especializações">Perfil Técnico</SectionTitle>
@@ -455,7 +441,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* Skills Matrix */}
       <section id="habilidades" className="py-32 px-6 bg-white/[0.02]">
         <div className="max-w-7xl mx-auto">
           <SectionTitle subtitle="Competências Core">Habilidades Industriais</SectionTitle>
@@ -479,7 +464,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* Education Section */}
       <section id="formação" className="py-32 px-6">
         <div className="max-w-7xl mx-auto">
           <SectionTitle subtitle="Base Acadêmica">Formação</SectionTitle>
@@ -502,7 +486,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* Projects Showcase */}
       <section id="projetos" className="py-32 px-6">
         <div className="max-w-7xl mx-auto">
           <SectionTitle subtitle="Execução">Projetos de Impacto</SectionTitle>
@@ -532,7 +515,6 @@ export default function App() {
             ))}
           </div>
 
-          {/* GitHub Repos Grid */}
           <div className="mt-24 p-12 rounded-[40px] bg-white/[0.01] border border-white/5">
             <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
               <div>
@@ -574,7 +556,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* Terminal Contact Section */}
       <section id="contato" className="py-32 px-6">
         <div className="max-w-4xl mx-auto rounded-[40px] bg-white/[0.02] border border-white/5 overflow-hidden">
           <div className="flex items-center gap-2 px-6 py-4 bg-white/5 border-b border-white/10">
@@ -612,7 +593,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="py-20 px-6 border-t border-white/5">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
           <div className="flex items-center gap-2 mb-4 justify-center md:justify-start">
