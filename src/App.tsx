@@ -113,9 +113,9 @@ const EDUCATION = [
     status: "Concluído"
   },
   {
-    institution: "UniFatecie",
+    institution: "Unopar",
     degree: "Análise e Desenvolvimento de Sistemas",
-    period: "2025",
+    period: "2022",
     status: "Concluído"
   },
   {
@@ -128,6 +128,12 @@ const EDUCATION = [
     institution: "Universidade Positivo",
     degree: "Bacharelado em Administração e Negócios",
     period: "2018 - 2021",
+    status: "Concluído"
+  }
+  {
+    institution: "Colegio Humberto de Alencar Castelo Branco",
+    degree: "Técnico em Segurança do Trabalho",
+    period: "2010 - 2011",
     status: "Concluído"
   }
 ];
