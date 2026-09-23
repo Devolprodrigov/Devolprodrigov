@@ -165,6 +165,15 @@ const PROJECTS = [
     liveUrl: "#"
   },
   {
+    title: "ERP Industrial(Reciclagem)",
+    desc: "Solução industrial completa desenvolvida com React, Tailwind CSS e 
+      Firebase para gestão de resíduos, controle de estoque, emissão de NF-e e relatórios financeiros automatizados.",
+    tech: ["React" , "Firebase", "Tailwind", "CSS", "SEFAZ", "API", "BigQuery", "UX"],
+    color: "from-emerald-500 to-teal-400",
+    githubUrl: "https://github.com/Devolprodrigov",
+    liveUrl: "#"
+  },
+  {
     title: "ETL Predictive Pipeline",
     desc: "Pipeline de dados que identifica tendências e gargalos logísticos antes que impactem a operação.",
     tech: ["Python", "Pandas", "SQL"],
